@@ -1,4 +1,4 @@
-const api = 'https://YOUR-BACKEND-URL/render.com'; // replace after deploy
+const api = 'https://justus-backend.onrender.com'; // replace after deploy
 
 async function signup() {
   const form = document.getElementById('loginForm');
