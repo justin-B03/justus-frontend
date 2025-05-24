@@ -1,10 +1,11 @@
-const api = 'https://justus-backend.onrender.com'; // replace after deploy
+const api = 'https://justus-backend.onrender.com';
 
 async function signup() {
   const form = document.getElementById('loginForm');
   const res = await fetch(`${api}/signup`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
     body: JSON.stringify({
       email: form.email.value,
       password: form.password.value
@@ -20,6 +21,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
   const res = await fetch(`${api}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
     body: JSON.stringify({
       email: form.email.value,
       password: form.password.value
