@@ -7,7 +7,7 @@ async function signup() {
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     body: JSON.stringify({
-      username: form.email.value,
+      username: form.username.value,
       password: form.password.value
     })
   });
@@ -23,7 +23,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     body: JSON.stringify({
-      username: form.email.value,
+      username: form.username.value,
       password: form.password.value
     })
   });
