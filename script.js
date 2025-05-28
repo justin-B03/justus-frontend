@@ -102,7 +102,7 @@ async function loadInbox() {
     `;
   }).join('');
 }
-//loadInbox();
+loadInbox();
 
 function goToLogin() {
   location.href = 'index.html';
