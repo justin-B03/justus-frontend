@@ -6,21 +6,9 @@
   <title>Just Us – Home</title>
   <style>
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #fce3ec, #ffe8d6);
-    }
-
-    .container {
-      margin-top: 100px !important;
-      padding-top: 50px !important;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      text-align: center;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      max-width: 600px;
+      background: linear-gradient(to bottom right, #fce3ec, #ffe8d6);
     }
 
     .navbar {
@@ -46,7 +34,8 @@
     }
 
     .nav-logo {
-      height: 36px;
+      height: 50px;
+      width: auto;
     }
 
     .username {
@@ -68,57 +57,72 @@
       background: #eef;
     }
 
-    .main-content {
-      padding-top: 80px !important;
-      max-width: 800px;
-      margin: 0 auto;
+    .container {
+      background: white;
       padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
       text-align: center;
+      margin: 100px auto 40px auto;
     }
 
-    #inbox {
-      text-align: left;
-      margin-top: 1.5rem;
-    }
-
-    #inbox div {
-      background: #fff;
-      padding: 1rem;
-      margin-bottom: 0.75rem;
-      border-left: 4px solid #ffa7b5;
-      border-radius: 10px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      align-items: center; /* This centers children horizontally */
+      gap: 1rem;
     }
 
-    input, textarea {
-      width: 90%; /* Optional: reduce from 100% for better spacing */
-      max-width: 600px;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
+    input,
+    textarea,
+    select {
+      padding: 0.9rem;
       border: 1px solid #ccc;
-      border-radius: 10px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.2s ease;
+    }
+
+    select {
+      background-color: white;
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+    }
+
+    select:focus,
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #5c67f2;
+    }
+
+    option {
       font-size: 1rem;
     }
 
-    button {
+    button[type="submit"] {
       width: 100%;
-      padding: 0.8rem;
+      padding: 0.9rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background: #5c67f2;
       color: white;
       font-size: 1rem;
       cursor: pointer;
-      margin-top: 0.5rem;
+      transition: background 0.2s ease;
     }
 
-    button:hover {
+    button[type="submit"]:hover {
       background: #4a54e1;
     }
   </style>
@@ -139,10 +143,21 @@
     <h3>Send a Message</h3>
     <form id="messageForm">
       <input type="text" name="to" placeholder="Send to (username)" required />
+
+      <select name="emotion" id="emotion" required>
+        <option value="" disabled selected>Select emotion</option>
+        <option value="happy">😊 Happy</option>
+        <option value="love">❤️ Love</option>
+        <option value="thankful">🙏 Thankful</option>
+        <option value="sad">😢 Sad</option>
+        <option value="angry">😠 Angry</option>
+        <option value="excited">🎉 Excited</option>
+        <option value="worried">😟 Worried</option>
+      </select>
+
       <textarea name="message" placeholder="Your message..." required></textarea>
       <button type="submit">Send</button>
     </form>
-
   </div>
   <script src="script.js"></script>
 </body>

@@ -60,6 +60,7 @@ document.getElementById('messageForm')?.addEventListener('submit', async (e) => 
     credentials: 'include',
     body: JSON.stringify({
       to: form.to.value,
+      emotion: form.emotion.value,
       message: form.message.value,
       type: form.type?.value || 'note'
     })
@@ -75,9 +76,16 @@ async function loadInbox() {
   if (!res.ok) return;
   const inbox = await res.json();
   const container = document.getElementById('inbox');
-  container.innerHTML = inbox.map(m => `
-    <div><b>From:</b> ${m.from}<br>${m.message}</div><hr>
-  `).join('');
+  container.innerHTML = inbox.map(m => {
+    const emotionLabel = formatEmotion(m.type);
+    return `
+      <div>
+        <div><b>From:</b> ${m.from}</div>
+        <div><b>Emotion:</b> ${emotionLabel}</div>
+        <div>${m.message}</div>
+      </div>
+    `;
+  }).join('');
 }
 loadInbox();
 
@@ -102,5 +110,18 @@ async function showUsername() {
     const data = await res.json();
     const el = document.getElementById('usernameDisplay');
     if (el) el.textContent = data.username;
+  }
+}
+
+function formatEmotion(type) {
+  switch (type) {
+    case 'happy': return '😊 Happy';
+    case 'love': return '❤️ Love';
+    case 'thankful': return '🙏 Thankful';
+    case 'sad': return '😢 Sad';
+    case 'angry': return '😠 Angry';
+    case 'excited': return '🎉 Excited';
+    case 'worried': return '😟 Worried';
+    default: return '💬 Note';
   }
 }
