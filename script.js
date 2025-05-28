@@ -72,15 +72,29 @@ document.getElementById('messageForm')?.addEventListener('submit', async (e) => 
   } else showError('Failed to send message. Please try again.');
 });
 
+const emotionMap = {
+  happy: "😊 Happy",
+  love: "❤️ Love",
+  thankful: "🙏 Thankful",
+  sad: "😢 Sad",
+  angry: "😠 Angry",
+  excited: "🎉 Excited",
+  worried: "😟 Worried",
+  note: "🗨️ Note"
+};
+
 async function loadInbox() {
   const res = await fetch(`${api}/inbox`, { credentials: 'include' });
   if (!res.ok) return;
+
   const inbox = await res.json();
   const container = document.getElementById('inbox');
+
   container.innerHTML = inbox.map(m => {
-    const emotionLabel = formatEmotion(m.type);
+    const emotionLabel = emotionMap[m.emotion] || m.emotion;
+
     return `
-      <div>
+      <div class="message-card">
         <div><b>From:</b> ${m.from}</div>
         <div><b>Emotion:</b> ${emotionLabel}</div>
         <div>${m.message}</div>
@@ -88,7 +102,7 @@ async function loadInbox() {
     `;
   }).join('');
 }
-loadInbox();
+//loadInbox();
 
 function goToLogin() {
   location.href = 'index.html';
@@ -115,18 +129,5 @@ async function showUsername() {
     const data = await res.json();
     const el = document.getElementById('usernameDisplay');
     if (el) el.textContent = data.username;
-  }
-}
-
-function formatEmotion(type) {
-  switch (type) {
-    case 'happy': return '😊 Happy';
-    case 'love': return '❤️ Love';
-    case 'thankful': return '🙏 Thankful';
-    case 'sad': return '😢 Sad';
-    case 'angry': return '😠 Angry';
-    case 'excited': return '🎉 Excited';
-    case 'worried': return '😟 Worried';
-    default: return '💬 Note';
   }
 }
