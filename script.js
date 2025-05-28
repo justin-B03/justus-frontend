@@ -40,7 +40,8 @@ document.getElementById('messageForm')?.addEventListener('submit', async (e) => 
     credentials: 'include',
     body: JSON.stringify({
       to: form.to.value,
-      message: form.message.value
+      message: form.message.value,
+      type: form.type?.value || 'note'
     })
   });
   if (res.ok) {
