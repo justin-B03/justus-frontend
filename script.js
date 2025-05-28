@@ -98,6 +98,10 @@ function goToMessages() {
   location.href = 'messages.html';
 }
 
+function goToLanding() {
+  location.href = 'landing.html';
+}
+
 function logout() {
   fetch(`${api}/logout`, {
     method: 'POST',
