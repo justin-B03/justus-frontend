@@ -1,5 +1,7 @@
 const api = 'https://justus-backend.onrender.com';
 
+document.addEventListener('DOMContentLoaded', showUsername);
+
 async function signup() {
   const form = document.getElementById('loginForm');
   const res = await fetch(`${api}/signup`, {
@@ -74,4 +76,13 @@ function logout() {
     method: 'POST',
     credentials: 'include'
   }).then(() => location.href = 'index.html');
+}
+
+async function showUsername() {
+  const res = await fetch(`${api}/me`, { credentials: 'include' });
+  if (res.ok) {
+    const data = await res.json();
+    const el = document.getElementById('usernameDisplay');
+    if (el) el.textContent = data.username;
+  }
 }
