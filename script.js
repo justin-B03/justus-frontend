@@ -1,6 +1,14 @@
 const api = 'https://justus-backend.onrender.com';
+const errorEl = document.getElementById('errorMessage');
 
 document.addEventListener('DOMContentLoaded', showUsername);
+
+function showError(msg) {
+  if (errorEl) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+  }
+}
 
 async function signup() {
   const form = document.getElementById('loginForm');
@@ -13,8 +21,13 @@ async function signup() {
       password: form.password.value
     })
   });
-  if (res.ok) location.href = 'landing.html';
-  else alert('Signup failed');
+  if (res.ok) {
+    location.href = 'landing.html';
+    errorEl.style.display = 'none';
+  }
+  else {
+    showError('Signup failed. Please try again.');
+  }
 }
 
 document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
@@ -29,8 +42,13 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
       password: form.password.value
     })
   });
-  if (res.ok) location.href = 'landing.html';
-  else alert('Login failed');
+  if (res.ok) {
+    location.href = 'landing.html';
+    errorEl.style.display = 'none';
+  }
+  else {
+    showError('Login failed. Please check your credentials.');
+  }
 });
 
 document.getElementById('messageForm')?.addEventListener('submit', async (e) => {
@@ -49,7 +67,7 @@ document.getElementById('messageForm')?.addEventListener('submit', async (e) => 
   if (res.ok) {
     form.reset();
     loadInbox();
-  } else alert('Message failed');
+  } else showError('Failed to send message. Please try again.');
 });
 
 async function loadInbox() {

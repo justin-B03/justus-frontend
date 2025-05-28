@@ -90,8 +90,15 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
 
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* This centers children horizontally */
+    }
+
     input, textarea {
-      width: 100%;
+      width: 90%; /* Optional: reduce from 100% for better spacing */
+      max-width: 600px;
       padding: 0.8rem;
       margin-bottom: 1rem;
       border: 1px solid #ccc;
