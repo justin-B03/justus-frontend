@@ -1,6 +1,7 @@
 const api = 'https://justus-backend.onrender.com';
 const errorEl = document.getElementById('errorMessage');
 
+document.getElementById("year").textContent = new Date().getFullYear();
 document.addEventListener('DOMContentLoaded', showUsername);
 
 function showError(msg) {
