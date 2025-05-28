@@ -60,3 +60,14 @@ async function loadInbox() {
   `).join('');
 }
 loadInbox();
+
+function goToLogin() {
+  location.href = 'login.html';
+}
+
+function logout() {
+  fetch(`${api}/logout`, {
+    method: 'POST',
+    credentials: 'include'
+  }).then(() => location.href = 'login.html');
+}

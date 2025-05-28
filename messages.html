@@ -1,25 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Just Us – Messages</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="top-bar">
+    <img src="./images/JustUs_Logo.png" alt="Just Us Logo" class="logo" />
+    <button onclick="logout()">Logout</button>
+  </div>
+
   <div class="container">
-    <h2>Your Inbox</h2>
-    <div id="inbox"></div>
+    <h2>Inbox</h2>
+    <div id="inbox">Loading...</div>
+
+    <hr />
+
+    <h3>Send a Message</h3>
     <form id="messageForm">
-      <input name="to" placeholder="Send to (username)" required />
+      <input type="text" name="to" placeholder="Send to (username)" required />
       <textarea name="message" placeholder="Your message..." required></textarea>
-      <!-- Optional -->
-      <!-- <select name="type">
-        <option value="note">Note</option>
-        <option value="love">Love</option>
-        <option value="concern">Concern</option>
-      </select> -->
       <button type="submit">Send</button>
     </form>
+
+    <br />
+    <button onclick="goToLogin()">Back to Login</button>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
