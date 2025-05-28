@@ -2,13 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Just Us – Home</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fce3ec, #ffe8d6);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: #5c67f2;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+
+    .navbar-left, .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      height: 36px;
+    }
+
+    .username {
+      font-weight: 600;
+    }
+
+    button {
+      background: white;
+      color: #5c67f2;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background: #eef;
+    }
+
+    .main-content {
+      margin-top: 100px !important;
+      padding-top: 50px !important;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      max-width: 600px;
+    }
+
+    #inbox {
+      text-align: left;
+      margin-top: 1.5rem;
+    }
+
+    #inbox div {
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      border-left: 4px solid #ffa7b5;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- TOP NAVIGATION BAR -->
   <header class="navbar">
     <div class="navbar-left">
       <img src="./images/JustUs_Logo.png" alt="Just Us" class="nav-logo" />
@@ -20,7 +96,6 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
   <main class="main-content">
     <h2>Messages Received</h2>
     <div id="inbox">Loading...</div>
