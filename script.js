@@ -62,12 +62,16 @@ async function loadInbox() {
 loadInbox();
 
 function goToLogin() {
-  location.href = 'login.html';
+  location.href = 'index.html';
+}
+
+function goToMessages() {
+  location.href = 'messages.html';
 }
 
 function logout() {
   fetch(`${api}/logout`, {
     method: 'POST',
     credentials: 'include'
-  }).then(() => location.href = 'login.html');
+  }).then(() => location.href = 'index.html');
 }
