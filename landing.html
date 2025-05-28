@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Just Us – Home</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="top-bar">
-    <span id="usernameDisplay"></span>
-    <button onclick="logout()">Logout</button>
-    <button onclick="goToMessages()">Message</button>
-  </div>
-  <div class="container">
-    <h3>Messages Received</h3>
-    <div id="inbox"></div>
-  </div>
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="./images/JustUs_Logo.png" alt="Just Us" class="nav-logo" />
+      <span class="username" id="usernameDisplay">User</span>
+    </div>
+    <div class="navbar-right">
+      <button onclick="goToMessages()">Message</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <h2>Messages Received</h2>
+    <div id="inbox">Loading...</div>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>

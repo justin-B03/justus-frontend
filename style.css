@@ -124,3 +124,54 @@ button:hover {
     width: 90px;
   }
 }
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #5c67f2;
+  padding: 1rem 2rem;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-logo {
+  height: 40px;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.navbar-right button {
+  margin-left: 1rem;
+  background: #ffffff33;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.navbar-right button:hover {
+  background: #ffffff55;
+}
+
+/* Main content styling */
+.main-content {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
