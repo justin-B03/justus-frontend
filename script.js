@@ -11,7 +11,7 @@ async function signup() {
       password: form.password.value
     })
   });
-  if (res.ok) location.href = 'messages.html';
+  if (res.ok) location.href = 'landing.html';
   else alert('Signup failed');
 }
 
@@ -27,7 +27,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
       password: form.password.value
     })
   });
-  if (res.ok) location.href = 'messages.html';
+  if (res.ok) location.href = 'landing.html';
   else alert('Login failed');
 });
 

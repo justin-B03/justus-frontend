@@ -9,11 +9,32 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #fce3ec, #ffe8d6);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
   padding: 2rem;
   color: #333;
+}
+
+/* Logo Area */
+.logo-wrapper {
+  margin-bottom: 1rem;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+/* Top Navigation Bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  max-width: 500px;
 }
 
 /* Container */
@@ -27,16 +48,22 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  text-align: center;
 }
 
 /* Headings */
-h2 {
-  text-align: center;
-  font-size: 1.8rem;
+h2, h3 {
+  font-size: 1.6rem;
   margin-bottom: 1rem;
 }
 
-/* Inputs */
+/* Form Inputs & Layout */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 input,
 textarea {
   width: 100%;
@@ -56,7 +83,7 @@ textarea:focus {
 /* Buttons */
 button {
   padding: 0.75rem 1.2rem;
-  background: #ffa7b5;
+  background: #5c67f2;
   color: white;
   border: none;
   border-radius: 10px;
@@ -66,53 +93,34 @@ button {
 }
 
 button:hover {
-  background: #ff8aa0;
+  background: #4a54e1;
 }
 
-/* Inbox messages */
+/* Inbox Messages */
 #inbox div {
   background: #f9f9f9;
   padding: 1rem;
   border-radius: 10px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   border-left: 4px solid #ffa7b5;
+  text-align: left;
 }
 
-/* Form layout */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+/* Message Meta */
+#inbox div b {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #5c67f2;
 }
 
-.logo {
-  max-width: 120px;
-}
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+  .container, .top-bar {
+    padding: 1rem;
+    width: 90%;
+  }
 
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-}
-
-.container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-form input, form textarea {
-  width: 100%;
-  margin-bottom: 0.5rem;
-  padding: 0.75rem;
-}
-
-form button {
-  width: 100%;
-  padding: 0.75rem;
-  background: #5c67f2;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  .logo {
+    width: 90px;
+  }
 }
