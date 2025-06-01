@@ -17,7 +17,7 @@ document.getElementById('friendRequestForm')?.addEventListener('submit', async (
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
-    body: JSON.stringify({ to: form.friendUsername.value })
+    body: JSON.stringify({ to: form.to.value })
   });
 
   const msg = document.getElementById('friendRequestMessage');
