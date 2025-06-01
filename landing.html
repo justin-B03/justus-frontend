@@ -56,7 +56,7 @@
       background: #eef;
     }
 
-    .main-content {
+    .main-content, .friends-list, .friend-requests {
       margin-top: 100px !important;
       padding-top: 50px !important;
       max-width: 800px;
@@ -67,6 +67,21 @@
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       max-width: 600px;
+    }
+
+    .dashboard-cards {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-top: 100px;
+      flex-wrap: wrap; /* makes it responsive */
+    }
+
+    .dashboard-cards section {
+      flex: 1 1 300px; /* grow, shrink, basis */
+      max-width: 380px;
+      min-width: 300px;
     }
 
     #inbox {
@@ -83,13 +98,28 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
 
+    .request-box, .friend-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+    }
+
+    .status.accepted {
+      color: green;
+      font-weight: bold;
+    }
+
     .footer {
-        text-align: center;
-        padding: 1rem;
-        font-size: 0.9rem;
-        color: #555;
-        margin-top: 2rem;
-        opacity: 0.7;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 2rem;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -106,22 +136,35 @@
     </div>
   </header>
 
-  <h3>Send Friend Request</h3>
-  <form id="friendRequestForm">
-    <input type="text" name="to" placeholder="Friend's username" required />
-    <button type="submit">Send Request</button>
-    <div id="friendRequestMessage" style="color: red; margin-top: 0.5rem;"></div>
-  </form>
+  <div class="dashboard-cards">
+    <section class="friend-requests">
+      <h3>Send Friend Request</h3>
+      <form id="friendRequestForm">
+        <input type="text" placeholder="Username" name="friendUsername" required />
+        <button type="submit">Send Request</button>
+      </form>
 
-  <hr />
+      <h3>Incoming Requests</h3>
+      <div id="incomingRequests"></div>
+    </section>
 
-  <h3>Pending Friend Requests</h3>
-  <div id="pendingRequests">Loading...</div>
+    <section class="friends-list">
+      <h3>Your Friends</h3>
+      <ul id="friendList">
+        <li class="friend-entry">
+          <span>cristina</span>
+          <span class="status accepted">✓ Friend</span>
+        </li>
+      </ul>
+    </section>
 
-  <main class="main-content">
-    <h2>Messages Received</h2>
-    <div id="inbox">Loading...</div>
-  </main>
+    <section class="main-content">
+        <h2>Messages Received</h2>
+        <div id="inbox">Loading...</div>
+    </section>
+  </div>
+
+
 
   <footer class="footer">
     <p>&copy; <span id="year"></span> Justin Borg</p>
