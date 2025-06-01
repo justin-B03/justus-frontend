@@ -4,6 +4,64 @@ const errorEl = document.getElementById('errorMessage');
 document.getElementById("year").textContent = new Date().getFullYear();
 document.addEventListener('DOMContentLoaded', showUsername);
 
+document.getElementById('friendRequestForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const res = await fetch(`${api}/friend-request`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({ to: form.to.value })
+  });
+
+  const msg = document.getElementById('friendRequestMessage');
+  if (res.ok) {
+    msg.textContent = 'Friend request sent!';
+    form.reset();
+    loadPendingRequests();
+  } else {
+    const error = await res.text();
+    msg.textContent = error;
+  }
+});
+
+async function loadPendingRequests() {
+  const res = await fetch(`${api}/friend-requests`, { credentials: 'include' });
+  if (!res.ok) return;
+
+  const requests = await res.json();
+  const container = document.getElementById('pendingRequests');
+  if (!requests.length) {
+    container.innerHTML = '<p>No pending requests</p>';
+    return;
+  }
+
+  container.innerHTML = requests.map(r => `
+    <div>
+      <b>${r.fromUsername}</b> wants to be friends.
+      <button onclick="respondFriendRequest(${r.id}, 'accepted')">Accept</button>
+      <button onclick="respondFriendRequest(${r.id}, 'rejected')">Reject</button>
+    </div>
+  `).join('');
+}
+
+async function respondFriendRequest(requestId, action) {
+  const res = await fetch(`${api}/friend-request/respond`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({ requestId, action })
+  });
+
+  if (res.ok) {
+    loadPendingRequests();
+  } else {
+    alert('Error processing request');
+  }
+}
+
+loadPendingRequests(); // Call once on page load
+
 function showError(msg) {
   if (errorEl) {
     errorEl.textContent = msg;

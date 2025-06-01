@@ -106,6 +106,18 @@
     </div>
   </header>
 
+  <h3>Send Friend Request</h3>
+  <form id="friendRequestForm">
+    <input type="text" name="to" placeholder="Friend's username" required />
+    <button type="submit">Send Request</button>
+    <div id="friendRequestMessage" style="color: red; margin-top: 0.5rem;"></div>
+  </form>
+
+  <hr />
+
+  <h3>Pending Friend Requests</h3>
+  <div id="pendingRequests">Loading...</div>
+
   <main class="main-content">
     <h2>Messages Received</h2>
     <div id="inbox">Loading...</div>
