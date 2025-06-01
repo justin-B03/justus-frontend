@@ -2,7 +2,13 @@ const api = 'https://justus-backend.onrender.com';
 const errorEl = document.getElementById('errorMessage');
 
 document.getElementById("year").textContent = new Date().getFullYear();
-document.addEventListener('DOMContentLoaded', showUsername);
+
+document.addEventListener('DOMContentLoaded', () => {
+  showUsername();
+  loadPendingRequests();
+  loadFriendList();
+  loadInbox();
+});
 
 document.getElementById('friendRequestForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -30,7 +36,7 @@ async function loadPendingRequests() {
   if (!res.ok) return;
 
   const requests = await res.json();
-  const container = document.getElementById('pendingRequests');
+  const container = document.getElementById('incomingRequests');
   if (!requests.length) {
     container.innerHTML = '<p>No pending requests</p>';
     return;
@@ -42,6 +48,26 @@ async function loadPendingRequests() {
       <button onclick="respondFriendRequest(${r.id}, 'accepted')">Accept</button>
       <button onclick="respondFriendRequest(${r.id}, 'rejected')">Reject</button>
     </div>
+  `).join('');
+}
+
+async function loadFriendList() {
+  const res = await fetch(`${api}/friends`, { credentials: 'include' });
+  if (!res.ok) return;
+
+  const friends = await res.json();
+  const list = document.getElementById('friendList');
+
+  if (!friends.length) {
+    list.innerHTML = '<li>No friends yet.</li>';
+    return;
+  }
+
+  list.innerHTML = friends.map(f => `
+    <li class="friend-entry">
+      <span>${f.username}</span>
+      <span class="status accepted">✓ Friend</span>
+    </li>
   `).join('');
 }
 

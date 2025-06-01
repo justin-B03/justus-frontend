@@ -56,7 +56,7 @@
       background: #eef;
     }
 
-    .main-content, .friends-list, .friend-requests {
+    .sections-landing {
       margin-top: 100px !important;
       padding-top: 50px !important;
       max-width: 800px;
@@ -137,34 +137,30 @@
   </header>
 
   <div class="dashboard-cards">
-    <section class="friend-requests">
+    <section class="sections-landing">
       <h3>Send Friend Request</h3>
       <form id="friendRequestForm">
-        <input type="text" placeholder="Username" name="friendUsername" required />
+        <input type="text" placeholder="Username" name="to" required />
         <button type="submit">Send Request</button>
       </form>
+      <p id="friendRequestMessage" style="margin-top: 0.5rem; color: green;"></p>
+    </section>
 
+    <section class="sections-landing">
       <h3>Incoming Requests</h3>
       <div id="incomingRequests"></div>
     </section>
 
-    <section class="friends-list">
+    <section class="sections-landing">
       <h3>Your Friends</h3>
-      <ul id="friendList">
-        <li class="friend-entry">
-          <span>cristina</span>
-          <span class="status accepted">✓ Friend</span>
-        </li>
-      </ul>
+      <ul id="friendList"></ul>
     </section>
 
-    <section class="main-content">
+    <section class="sections-landing">
         <h2>Messages Received</h2>
         <div id="inbox">Loading...</div>
     </section>
   </div>
-
-
 
   <footer class="footer">
     <p>&copy; <span id="year"></span> Justin Borg</p>
