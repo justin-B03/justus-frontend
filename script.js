@@ -17,7 +17,7 @@ document.getElementById('friendRequestForm')?.addEventListener('submit', async (
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
-    body: JSON.stringify({ to: form.to.value })
+    body: JSON.stringify({ to: form.friendUsername.value })
   });
 
   const msg = document.getElementById('friendRequestMessage');
@@ -85,8 +85,6 @@ async function respondFriendRequest(requestId, action) {
     alert('Error processing request');
   }
 }
-
-loadPendingRequests(); // Call once on page load
 
 function showError(msg) {
   if (errorEl) {
